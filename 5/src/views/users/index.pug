@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Users List
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+  body
+    .container
+      h1 Users List
+      table.table
+        thead
+          tr
+            th Username
+            th Email
+        tbody
+          each user in users
+            tr
+              td
+                a(href=`/users/${user.id}`) #{user.username}
+              td #{user.email}

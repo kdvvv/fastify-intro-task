@@ -7,7 +7,16 @@ export default () => {
   const companies = getCompanies();
 
   // BEGIN (write your solution here)
+  app.get('/companies/:id', (request, reply) => {
+    const { id } = request.params;
+    const company = companies.find(company => company.id === id);
 
+    if (company) {
+      reply.send(company);
+    } else {
+      reply.status(404).send('Company not found');
+    }
+  });
   // END
 
   return app;

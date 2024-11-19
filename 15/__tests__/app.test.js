@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect} from "@playwright/test";
 import users from "../__fixtures__/user.js";
 
 test("Test", async ({ page }) => {

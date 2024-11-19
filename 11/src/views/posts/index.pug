@@ -1,0 +1,19 @@
+extends ../layout/page.pug
+
+block content
+  h1 Список постов
+
+  ul.list-group
+    each post in posts
+      li.list-group-item
+        a(href=`/posts/${post.id}`)= post.title
+
+  // Пагинация
+  nav
+    ul.pagination
+      if currentPage > 1
+        li.page-item
+          a.page-link(href=`/posts?page=${currentPage - 1}`) Назад
+      if currentPage < totalPages
+        li.page-item
+          a.page-link(href=`/posts?page=${currentPage + 1}`) Вперед

@@ -9,7 +9,15 @@ export default () => {
   const app = fastify();
 
   // BEGIN (write your solution here)
+    app.get('/:type', async (request, reply) => {
+        const { type } = request.params;
 
+        if (data[type]) {
+            return data[type];
+        } else {
+            reply.code(404).send({ error: 'Not found' });
+        }
+    });
   // END
 
   return app;

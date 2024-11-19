@@ -1,0 +1,27 @@
+extends ../layout/page.pug
+
+block content
+  h1 Список пользователей
+
+  form(action="/users", method="get")
+    div.form-group
+      label(for="term") Поиск по имени пользователя
+      input#term.form-control(type="text", name="term", value=term, placeholder="Введите имя пользователя")
+    button.btn.btn-primary(type="submit") Поиск
+
+  if users.length > 0
+    table.table
+      thead
+        tr
+          th ID
+          th Имя пользователя
+          th Email
+      tbody
+        each user in users
+          tr
+            td= user.id
+            td
+              a(href=`/users/${user.id}`)= user.username
+            td= user.email
+  else
+    p Нет совпадений. Попробуйте изменить запрос.
